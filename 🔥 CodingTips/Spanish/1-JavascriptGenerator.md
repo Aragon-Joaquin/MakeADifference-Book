@@ -1,16 +1,17 @@
 #javascript #intermedio
 
 > **Tabla de contenidos:**
-- [[#¿Que es un Generator en JS?]]
-- [[#El problema con las funciones.]]
-	- [[#Inicializacion]]
-	- [[#Método next();]]
-	- [[#Breve explicación de lo que sucede.]]
-- [[#Datos importantes a tener en cuenta.]]
-	- [[#Arrow Functions]]
-	- [[#Almacenamiento de informacion]]
-	- [[#Return en Generators]]
-	- [[#Asignación de parámetros]]
+- [¿Que es un Generator en JS?](#que-es-un-generator-en-js)
+- [El problema con las funciones.](#el-problema-con-las-funciones)
+- [Como se usan los Generators.](#como-se-usan-los-generators)
+    - [Inicializacion:](#inicializacion)
+    - [Método next();](#método-next)
+    - [Breve explicación de lo que sucede.](#breve-explicación-de-lo-que-sucede)
+- [Datos importantes a tener en cuenta.](#datos-importantes-a-tener-en-cuenta)
+    - [Arrow Functions](#arrow-functions)
+    - [Almacenamiento de informacion](#almacenamiento-de-informacion)
+    - [Return en Generators](#return-en-generators)
+    - [Asignación de parámetros](#asignación-de-parámetros)
 
 ---
 ## ¿Que es un Generator en JS?
