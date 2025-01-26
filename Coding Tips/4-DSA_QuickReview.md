@@ -132,7 +132,7 @@ Hay mas tipos de arboles, pero creo que estos tres mencionados dan una base soli
 
 ## Stacks & Queues
 
-#### Stacks (Pila/Montón)
+#### Stacks (Pila)
 
 Una manera sencilla de entender este concepto es imaginarlo como si fuese un _Array/Arreglo_ en el cual al añadir un elemento, este creará un nuevo espacio y se insertara a lo ultimo de este arreglo. Y la forma para remover elementos, es quitando el ultimo elemento. Esto esta basado en el principio **LIFO** (Last In First Out) el cual el primer elemento añadido es procesado a lo **ultimo** y el ultimo elemento es el **primero** a procesar.
 
@@ -187,6 +187,42 @@ console.log(peopleQueue) // ["Herbert", "Kasey", "Cydney"]
 - Ambos son _Linear Data Structure_ y contienen un tamaño dinámico.
 - A diferencia de un Array, estos no pueden insertar datos en posiciones aleatorias.
 - Todas sus operaciones son de complejidad O(1) ([Articulo sobre el Big O Notation](https://the-amazing-gentleman-programming-book.vercel.app/en/book/Chapter06_Algorithms#big-o-notation)).
+
+## Heaps - not finished yet
+
+Un Heap (montón) es una estructura similar a los arboles binarios previamente vistos con una *Priority Queue (Cola de prioridad)*. Lo que lo hace especial a esta estructura es su facilidad de ordenar Arrays, permite repeticiones y su forma de organizar la información (ver tipos).
+
+*Esta estructura tiene 2 tipos predominantes:* 
+
+- **Max Heap:**
+El *Root* debe ser el mayor valor de todos los nodos, luego sus hijos deberán siempre ser **menor** o **igual** al nodo padre.
+La forma de representación de este Heap en un array seria de:
+```python
+[10, 6, 3, 2, 5, 1]
+```
+![MaxHeapExample](images/DSA_images/MaxHeap.png)
+- **Min Heap:**
+El *Root* debe ser el menor valor de todos los nodos, y sus hijos deberán siempre ser **mayor** o **igual** al nodo padre.
+La forma de representación de este Heap en un array seria de:
+```python
+[2, 4, 5, 12, 6, 9, 7]
+```
+![MinHeapExample](images/DSA_images/MinHeap.png)
+
+*Para acceder al elemento deseado del Heap, es recomendado utilizar las siguientes operaciones 
+( "i" es el índice del elemento del array que se desea saber los siguientes datos):*
+
+-  **Obtener el padre del nodo:**
+	- Array[(i-1)/2]
+
+- **Obtener el hijo izquierdo del nodo:**
+	- Array[(2*i)+1]
+
+- **Obtener el hijo derecho del nodo:
+	- Array[(2*i)+2]
+
+
+
 
 ---
 
