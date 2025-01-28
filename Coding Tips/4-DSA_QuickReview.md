@@ -188,9 +188,9 @@ console.log(peopleQueue) // ["Herbert", "Kasey", "Cydney"]
 - A diferencia de un Array, estos no pueden insertar datos en posiciones aleatorias.
 - Todas sus operaciones son de complejidad O(1) ([Articulo sobre el Big O Notation](https://the-amazing-gentleman-programming-book.vercel.app/en/book/Chapter06_Algorithms#big-o-notation)).
 
-## Heaps - not finished yet
+## Heaps
 
-Un Heap (montón) es una estructura similar a los arboles binarios previamente vistos con una *Priority Queue (Cola de prioridad)*. Lo que lo hace especial a esta estructura es su facilidad de ordenar Arrays, permite repeticiones y su forma de organizar la información (ver tipos).
+Un Heap (montón) es una estructura similar a los arboles binarios previamente vistos con una *Priority Queue (Cola de prioridad)*. Lo que lo hace especial a esta estructura de los _Binary Search Tree (Árbol de búsqueda binaria)_ es su facilidad de ordenar Arrays, permite repeticiones, su forma de organizar la información (ver tipos) y la importancia del orden de los nodos.
 
 *Esta estructura tiene 2 tipos predominantes:* 
 
@@ -221,8 +221,9 @@ La forma de representación de este Heap en un array seria de:
 - **Obtener el hijo derecho del nodo:
 	- Array[(2*i)+2]
 
+_No voy a brindar un ejemplo de código ya que es demasiado extenso, pero si te voy a dejar una [actividad a resolver](https://leetcode.com/problems/take-gifts-from-the-richest-pile/description/). Aunque la actividad este ligada mas a las priority queues y a la matemática, creo que sigue siendo ideal para resolver._ 
 
-
+## Graphs
 
 ---
 
