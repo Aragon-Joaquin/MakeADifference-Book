@@ -17,21 +17,23 @@ _Cualquier concepto que este erróneo o mal explicado, hágamelo saber con una I
 DSA es un acrónimo de **"Data Structures and Algorithms"** (Estructura de datos y algoritmos) e influye un rol importante en la programación debido a que, quieras o no, siempre vas a ser uso de estructuras de datos como **Arrays, Stacks, Queues**, etc. para optimizar la forma en la cual almacenas los datos, y los algoritmos son esenciales para realizar acciones de **búsqueda, agrupación, iterar listas** hasta conceptos mas complejos como buscar el camino mas corto.
 
 **Todos estos conceptos se pueden fortalecer en plataformas como [LeetCode](https://leetcode.com) y las actividades recomendadas estarán en esa plataforma.**
-Empecemos sin dar tanta vueltas.
+
+*Empecemos sin dar tanta vueltas.*
 
 ## Associative array (Maps/Dictionaries)
 
 El concepto de **Mapa** se utiliza por Java y C++ mientras que **Diccionario** es usado por .Net y Python, así que tratare de englobar esto lo mas que pueda.
 
-Un **Associative Array (Arreglo Asociativo)** almacena los datos en una colección utilizando una _key_ y el _value_ el cual será el dato. A diferencia de una Hash Table, este si se puede iterar y no suele tener una _key_ única que lo defina bien.
+Un **Associative Array (Arreglo Asociativo)** almacena los datos en una colección utilizando una _key_ (que será un identificador único al cual, en el código, nos referiremos a ese para obtener el valor almacenado)  y el _value_ el cual será el dato.
 
 Utilizare a JavaScript para realizar este ejemplo.
 
 ```javascript
 // Associative arrays in JS are Objects
-const myAssociativeArray = { day: 'monday', temperature: 23, isRaining: false }
+const myAssociativeArray = { day: 'monday', temperature: 23, isRaining: true }
+
 console.log(myAssociativeArray.day) // monday
-console.log(myAssociativeArray['isRaining']) // false
+console.log(myAssociativeArray.isRaining) // true
 
 // Good use for hashTables:
 const HTTPHashTable = {
@@ -40,9 +42,11 @@ const HTTPHashTable = {
 	DELETE: () => 'DELETE FROM user WHERE id = 1'
 	//... etc
 }
-const query = HTTPHashTable['GET'] // SELECT * FROM table
-await sql`${query()}`
+const query = HTTPHashTable['GET']() // returns SELECT * FROM table
+await sql`${query}`
 ```
+
+*En algunos lenguajes los array asociativos si se pueden iterar, caso contrario que las HashTables*
 
 ## Linked Lists
 
@@ -78,7 +82,9 @@ _Lo ideal seria realizar una función recursiva y detenerse al momento que encue
 
 ## Trees
 
-Un **Tree (Árbol)** es una _Non-linear Data Structure (Estructura de datos NO lineal)_, es decir, sus elementos no están alineados secuencialmente por lo tanto no pueden ser todos recorridos en una sola ejecución. Esta estructura jerarquiza sus nodos, como si fuese un sistema de carpetas.
+Un **Tree (Árbol)** es una _Non-linear Data Structure (Estructura de datos NO lineal)_, es decir, sus elementos no están alineados secuencialmente por lo tanto no pueden ser todos recorridos en una sola ejecución. Cabe de aclarar que esta estructura siempre suele tener un numero $N$ de nodos y $N-1$ de aristas (debido a que el nodo *Root* no contiene padre).
+
+Esta estructura jerarquiza sus nodos, como si fuese un sistema de carpetas.
 
 ```python
 Root
@@ -129,6 +135,7 @@ _Al igual que el anterior, esto se podría recorrer con una función recursiva. 
 - Un _Binary Search Tree (Árbol de búsqueda binaria)_ suele utilizar números como valores, en vez de nombres previamente visto en los ejemplos. Supongamos que el _Root_ empieza con el valor de **10**, el hijo izquierdo de este siempre será menor al nodo padre, es decir, tendrá el valor de **9** o menos mientras que el hijo derecho siempre será mayor al nodo padre, por ejemplo, **11** o mayor. Y así recursivamente con los hijos.
 
 Hay mas tipos de arboles, pero creo que estos tres mencionados dan una base solida para adentrarse a las estructuras de datos. Procura de estudiarlos bien ya que son los mas comunes.
+
 
 ## Stacks & Queues
 
@@ -188,15 +195,17 @@ console.log(peopleQueue) // ["Herbert", "Kasey", "Cydney"]
 - A diferencia de un Array, estos no pueden insertar datos en posiciones aleatorias.
 - Todas sus operaciones son de complejidad O(1) ([Articulo sobre el Big O Notation](https://the-amazing-gentleman-programming-book.vercel.app/en/book/Chapter06_Algorithms#big-o-notation)).
 
+
 ## Heaps
 
-Un Heap (montón) es una estructura similar a los arboles binarios previamente vistos con una *Priority Queue (Cola de prioridad)*. Lo que lo hace especial a esta estructura de los _Binary Search Tree (Árbol de búsqueda binaria)_ es su facilidad de ordenar Arrays, permite repeticiones, su forma de organizar la información (ver tipos) y la importancia del orden de los nodos.
+Un **Heap (montón)** es una estructura similar a los arboles binarios previamente vistos con una *Priority Queue (Cola de prioridad)*. Lo que lo hace especial a esta estructura de los _Binary Search Tree (Árbol de búsqueda binaria)_ es su facilidad de ordenar Arrays, permite repeticiones, su forma de organizar la información (ver tipos) y la importancia del orden de los nodos.
 
 *Esta estructura tiene 2 tipos predominantes:* 
 
 - **Max Heap:**
 El *Root* debe ser el mayor valor de todos los nodos, luego sus hijos deberán siempre ser **menor** o **igual** al nodo padre.
 La forma de representación de este Heap en un array seria de:
+
 ```python
 [10, 6, 3, 2, 5, 1]
 ```
@@ -213,23 +222,69 @@ La forma de representación de este Heap en un array seria de:
 ( "i" es el índice del elemento del array que se desea saber los siguientes datos):*
 
 -  **Obtener el padre del nodo:**
-	- Array[(i-1)/2]
+	- $Array[(i-1)/2]$
 
 - **Obtener el hijo izquierdo del nodo:**
-	- Array[(2*i)+1]
+	- $Array[(2*i)+1]$
 
 - **Obtener el hijo derecho del nodo:
-	- Array[(2*i)+2]
+	- $Array[(2*i)+2]$
 
 _No voy a brindar un ejemplo de código ya que es demasiado extenso, pero si te voy a dejar una [actividad a resolver](https://leetcode.com/problems/take-gifts-from-the-richest-pile/description/). Aunque la actividad este ligada mas a las priority queues y a la matemática, creo que sigue siendo ideal para resolver._ 
 
+
 ## Graphs
+
+Los **Graphs (Grafos)** son parte de la misma estructura de datos que los *Trees (Arboles)*, una *estructura de datos no lineal*.
+La diferencia principal a la de un *Árbol*, es que este **no tiene reglas de como los aristas se deben conectar a los nodos** y su denotación consiste de $G = (V, E)$, siendo *V = vertices* (Nodos) y *E = egdes* (Aristas).
+
+#### Los Aristas pueden ser de dos tipos:
+
+- **Directed (dirigido):** Son aquellos que conectan dos nodos uni-direccionalmente. Es decir, solo van de punto $A → B$ y no viceversa. **Su denotación matemática** es $(A, B)$ siendo $A$ el origen y $B$ el destino.
+
+- **Undirected (no dirigido):** Los no dirigidos, en cambio, conectan dos nodos bi-direccionalmente. Pueden ir de punto $A → B$ y $B → A$. **Su denotación matemática** es { $A,B$ }, sin importar el orden, ya que, no es dirigido.
+
+![TypesOfEdges](images/DSA_images/Types_Edges.png)
+
+#### Algoritmos para recorrer grafos.
+
+- **Depth First Search (DFS):**
+En *Depth First Search (Búsqueda en Profundidad)* trata de recorrer el grafo lo mas profundo **posible** sin retroceder utilizando nodos adyacentes. Una vez que no haya mas nodos adyacentes para visitar, empieza a retroceder hasta que encuentre mas nodos sin visitar. 
+
+**Extras:**
+- Como un árbol, se suele empezar por el subárbol izquierdo, y una vez que lo recorre, va por el derecho.
+- Se crea un arreglo donde se almacena (usualmente de manera booleana) si el nodo fue recorrido. 
+
+**Ejemplo (Usa la imagen de abajo como referencia):**
+
+``` bash
+- Empieza en 0, Marca como visitado. Output 0
+- Recorre 3, Marca como visitado. Output 3
+- Recorre 6, Marca como visitado. Output 6
+No hay mas nodos adyacentes, se regresa hasta 0.
+- Recorre 2, Marca como visitado. Output 2
+- Recorre 4, Marca como visitado. Output 4
+- Recorre 1, Marca como visitado. Output 1
+No hay mas nodos adyacentes, se regresa hasta 4.
+- Recorre 5, Marca como visitado. Output 5
+Fin.
+```
+
+![DFSExample](images/DSA_images/Graph_DFS.png)
+*Usualmente utilizado para PathFinding, resolver laberintos o detección de ciclos en el grafo.*
+
+- **Breadth-First Search (BFS):**
+ *Breadth-First Search (Búsqueda en amplitud)*
+
+#### Tipos de representaciones.
+
+#### Mas tipos de grafos
 
 ---
 
 # Bibliografía
 
 Me he guiado de los siguientes artículos para desarrollar este tema:
-
+	
 - [Google Tech Dev Guide.](https://techdevguide.withgoogle.com/paths/data-structures-and-algorithms)
 - [Geeks For Geeks.](https://www.geeksforgeeks.org/data-structures/)
