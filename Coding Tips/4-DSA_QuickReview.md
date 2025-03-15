@@ -248,6 +248,8 @@ La diferencia principal a la de un *Árbol*, es que este **no tiene reglas de co
 
 #### Algoritmos para recorrer grafos.
 
+*Los algoritmos que voy a explicar son utilizados para estructuras de datos con forma de arboles, como los Heaps y Graphs.*
+
 - **Depth First Search (DFS):**
 En *Depth First Search (Búsqueda en Profundidad)* trata de recorrer el grafo lo mas profundo **posible** sin retroceder utilizando nodos adyacentes. Una vez que no haya mas nodos adyacentes para visitar, empieza a retroceder hasta que encuentre mas nodos sin visitar. 
 
@@ -257,7 +259,7 @@ En *Depth First Search (Búsqueda en Profundidad)* trata de recorrer el grafo lo
 
 **Ejemplo (Usa la imagen de abajo como referencia):**
 
-``` bash
+``` python
 - Empieza en 0, Marca como visitado. Output 0
 - Recorre 3, Marca como visitado. Output 3
 - Recorre 6, Marca como visitado. Output 6
@@ -274,8 +276,39 @@ Fin.
 *Usualmente utilizado para PathFinding, resolver laberintos o detección de ciclos en el grafo.*
 
 - **Breadth-First Search (BFS):**
- *Breadth-First Search (Búsqueda en amplitud)*
+ Dado un Grafo no dirigido, *Breadth-First Search (Búsqueda en amplitud)* trata de navegar por los nodos adyacentes, de izquierda a derecha, hasta llegar a lo mas profundo (no encontrar mas nodos adyacentes) o llegar a un nodo previamente recorrido.
+ 
+ **Extras:**
+ - Usualmente se utiliza una *queue* para mantener en memoria los nodos adyacentes pero no visitados aun.
+ - Se añade un elemento a la Queue cuando un nodo es recorrido y contiene adyacentes no repetidos en la lista.
 
+**Ejemplo (Usa la imagen de abajo como referencia):**
+
+``` python
+- Empieza en 0, Queue: [5, 4, 6]. Output 0
+- Recorre 5, Queue: [4, 6, 1]. Output 5
+- Recorre 4, Queue: [6, 1]. Output 4
+- Recorre 6, Queue: [1, 3]. Output 6
+- Recorre 1, Queue: [3, 2]. Output 1
+- Recorre 3, Queue: [2]. Output 3
+- Recorre 2, Queue: []. Output 2
+Fin.
+```
+
+![BFSExample](images/DSA_images/Graph_BFS.png)
+*Utilizado para resolver puzzles, encontrar el camino mas corto de unweighted graphs (grafos no ponderados) o transmisiones en redes*
+
+- **Dijkstra’s Algorithm**:
+El *Dijkstra’s Algorithm (Algoritmo de Dijkstra)*
+
+- **A* Search Algorithm**:
+El _A* Search Algorithm (El algoritmo de busqueda A*)_
+
+
+*Tambien hay mas algoritmos para recorrer arboles como...*
+- **Min-Cost Flow Algorithm**
+- **Prim’s Algorithm & Kruskal’s Algorithm**
+- **Bellman-Ford Algorithm.**
 #### Tipos de representaciones.
 
 #### Mas tipos de grafos
