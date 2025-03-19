@@ -28,21 +28,25 @@ Un **Associative Array (Arreglo Asociativo)** almacena los datos en una colecci�
 
 Utilizare a JavaScript para realizar este ejemplo.
 
-```javascript
+```js
 // Associative arrays in JS are Objects
-const myAssociativeArray = { day: 'monday', temperature: 23, isRaining: true }
+const myAssociativeArray = { 
+	day: 'monday',
+	temperature: 23,
+	isRaining: true
+}
 
 console.log(myAssociativeArray.day) // monday
 console.log(myAssociativeArray.isRaining) // true
 
 // Good use for hashTables:
 const HTTPHashTable = {
-	GET: () => 'SELECT * FROM table',
-	POST: () => "INSERT INTO user(name,age) VALUES('Juan',20) ",
-	DELETE: () => 'DELETE FROM user WHERE id = 1'
+	GET: () => 'SELECT * FROM table;',
+	POST: () => "INSERT INTO user(name,age) VALUES('Juan',20);",
+	DELETE: () => 'DELETE FROM user WHERE id = 1;'
 	//... etc
 }
-const query = HTTPHashTable['GET']() // returns SELECT * FROM table
+const query = HTTPHashTable['GET']() // returns 'SELECT * FROM table;'
 await sql`${query}`
 ```
 
@@ -50,17 +54,22 @@ await sql`${query}`
 
 ## Linked Lists
 
-Una **Linked List (Lista Enlazada)** es una _Linear Data Structure (Estructura de datos lineal)_ de nodos, cada uno referenciando al siguiente y al anterior. Esto tiene variaciones, pero prefiero ir a la base y no indagar en sus diferentes tipos.
+Una **Linked List (Lista Enlazada)** es una _Linear Data Structure (Estructura de datos lineal)_ de nodos, cada uno referenciando al que le sigue. Esto tiene variaciones, pero prefiero ir a la base y no indagar en sus diferentes tipos.
 
 La diferencia que tiene de un _Arreglo_ es que cada nodo almacena la referencia de memoria de sus nodos adyacentes. El primer nodo se llama _head_ y el ultimo nodo se llama _tail_ y suele apuntar a un valor _nulo_ para indicar que no hay mas valores a continuación.
+Hay casos donde esto no ocurre debido a que se trata de **Circular Linked List**, y el ultimo nodo vuelve a apuntar al *head* en vez de un valor nulo. Porfavor, mire la siguiente imagen y comparé:
 
-Me gusta demasiado asociar esta estructura con POO (aunque no estén relacionados de ninguna manera). Imagínate una instancia con 3 atributos, uno es el _value_ y vamos a suponer que contiene el numero 5 y las otras dos son instancias de la misma clase con el nombre _previousNode_ y _nextNode_.
+**LinkedList example:**
+![LinkedList](images/DSA_images/LinkedList.png)*Tambien existen las **Doubly Linked List**, que contienen 3 campos.*
+- *__PreviousVal__: Un puntero al nodo anterior.* 
+- *__Value__: El valor actual de este nodo.*
+- *__NextVal__: Un puntero al siguiente nodo.*
 
-**Si hacemos un _previousNode.value_ nos daría 4 y _nextNode.value_ nos daría 6.**
+En este ejemplo, supongamos que nuestra LinkedList se llama ```linked```, a la cual solo tiene dos propiedades, (ya que es una *Singly LinkedList*) *NextVal* y *Value* y queremos obtener los valores $1$ , $2$ y $null$ para comprobar que la lista tiene fin. 
 
 Ejemplo en C# de su utilización:
 
-```c#
+```cs
 using System; // this is for the String type & the Console.WriteLine
 using System.Collections.Generic; // this is for the LinkedList class
 
@@ -69,11 +78,13 @@ public class Program
 	public static void Main()
 	{
 		LinkedList<String> linked = new LinkedList<String>();
-		linked.AddLast("head node");
-		linked.AddLast("second node");
-		linked.AddLast("third node");
-
-		Console.WriteLine(linked.First.Next.Value); //second node
+		linked.AddLast("1");
+		linked.AddLast("2");
+		linked.AddLast("3");
+		
+		Console.WriteLine(linked.First.Value); // 1
+		Console.WriteLine(linked.First.Next.Value); // 2
+		Console.WriteLine(linked.First.Next.Next.Next.Value); // null
 	}
 }
 ```
@@ -165,7 +176,7 @@ dishStack.pop()
 console.log(dishStack) // [21, 45]
 ```
 
-#### Queues (Cola/Fila/Hilera)
+#### Queues (Cola/Fila)
 
 No es tan distinto a las Stacks a diferencia de que este caso se aplica el principio **FIFO** (First In First Out) que trata que el primer elemento añadido (o el elemento con mas tiempo en la fila) sea el primero a ser procesado.
 
@@ -236,7 +247,7 @@ _No voy a brindar un ejemplo de código ya que es demasiado extenso, pero si te 
 ## Graphs
 
 Los **Graphs (Grafos)** son parte de la misma estructura de datos que los *Trees (Arboles)*, una *estructura de datos no lineal*.
-La diferencia principal a la de un *Árbol*, es que este **no tiene reglas de como los aristas se deben conectar a los nodos** y su denotación consiste de $G = (V, E)$, siendo *V = vertices* (Nodos) y *E = egdes* (Aristas).
+La diferencia principal a la de un *Árbol*, es que este **no tiene reglas de como los aristas se deben conectar a los nodos** y su denotación consiste de $G = (V, E)$, siendo *V = vertices* (o como yo los llamo, "Nodos" pero su nomenclatura matemática es de "Vértices") y *E = egdes* (Aristas).
 
 #### Los Aristas pueden ser de dos tipos:
 
@@ -283,7 +294,6 @@ Fin.
  - Se añade un elemento a la Queue cuando un nodo es recorrido y contiene adyacentes no repetidos en la lista.
 
 **Ejemplo (Usa la imagen de abajo como referencia):**
-
 ``` python
 - Empieza en 0, Queue: [5, 4, 6]. Output 0
 - Recorre 5, Queue: [4, 6, 1]. Output 5
@@ -296,10 +306,63 @@ Fin.
 ```
 
 ![BFSExample](images/DSA_images/Graph_BFS.png)
-*Utilizado para resolver puzzles, encontrar el camino mas corto de unweighted graphs (grafos no ponderados) o transmisiones en redes*
+*Utilizado para resolver puzzles, encontrar el camino mas corto de unweighted graphs (grafos no ponderados) o transmisiones en redes.*
 
 - **Dijkstra’s Algorithm**:
-El *Dijkstra’s Algorithm (Algoritmo de Dijkstra)*
+El *Dijkstra’s Algorithm (Algoritmo de Dijkstra)* es un tipo de **weighted graph (grafo ponderado)**, (es decir, los *Edges (Aristas)* tienen un peso/numeración que representan un costo, distancia o similar) y sirve para encontrar el camino mas corto usando la menor cantidad de recursos posibles del punto $A → B$ o inclusive, mas de uno $A →$ {$B, C, D$} .
+
+**Extras:**
+- Su complejidad algorítmica (Big O Notation) es de  $O((V + E) log V)$ siendo $V$ el numero de nodos/vertices y la $E$ el numero de Aristas.
+- El Algoritmo de Dijkstra puede ser utilizado tanto en grafos dirigidos como los no dirigidos mientras que no tenga un coste negativo en uno de los Aristas.
+- Se suele emplear junto con una *Priority Queue (Cola de prioridad)* y un *Heap (Montículo)* para optimizar su rendimiento.
+
+**Ejemplo (Usa la imagen de abajo como referencia):**
+Antes de empezar la ejecución del algoritmo, se toma la distancia de cada uno de los nodos como infinita ($∞$) y crea un set/array de los nodos NO visitados. La ejecución terminara cuando cada nodo tenga su distancia determinada. Nos quedaría lo siguiente:
+
+- **Valores de los Nodos:** $A = 0, B = ∞, C = ∞, D = ∞, E = ∞, F = ∞, G = ∞$
+- **Nodos no visitados:** {$A, B, C, D, E, F, G$}
+
+Se empieza por el nodo 0 (en nuestro caso, el "A"), y buscaremos por nodos adyacentes.
+Primero definiremos nuestras relaciones adyacentes en una Matriz (aclaro que esto es una forma para resolverlo):
+```js
+const graph = [
+	//node A ⬇
+	[{nodo: "B", peso: 50 }, {nodo: "C", peso: 100}, {nodo: "D", peso: 25}], 
+	[{nodo: "F", peso: 100 } ], // node B
+	[{nodo: "E", peso: 75 }], // node C
+	[{nodo: "E", peso: 200 }], // node D
+	[{nodo: "G", peso: 150 }], // node E 
+	[{nodo: "G", peso: 25 }], // node F
+]
+
+
+// each position represents a node, for example, node[0] == "node A" && node[1] == "node B"...
+const distance = [0, infinity, infinity, infinity, infinity, infinity, infinity]
+const nonVisited = [false, false, false, false, false, false, false]
+```
+
+Una vez definida esta matriz, la idea principal para lograr llegar al objetivo podría ser acceder al elemento $graph[i]$ (empezamos primero por nodo "A"), iteramos el arreglo del nodo $i$, conseguimos los valores del diccionario/objeto, cambiamos el arreglo $distance$ y $nonVisited$ (en nuestro caso, pasarían a ser:
+
+```js 
+const distance = [0, 50, 100, 25, infinity, infinity, infinity]
+const nonVisited = [true, false, false, false, false, false, false]
+```
+
+Luego procedemos al siguiente elemento del arreglo ($graph[1] = nodo B$), y le sumamos al nodo F la cantidad de peso ($distance[1]$) del nodo B. Y luego lo marcamos al nodo B como visitado, y asi sucesivamente hasta que el arreglo de $nonVisited$ sea completamente $true$.
+
+*Es tedioso realizar el codigo ya que he utilizado nodos con letras y no numeros, por lo tanto tendria que realizar una funcion/hashmap/enumeration que indique la posición del nodo al que se quiere trabajar.*
+
+He aquí los resultados de lo que nos debería dar:
+``` python
+- Empieza en "A". costeAcumulado: 0
+- Recorre "B". costeAcumulado: 50
+- Recorre "F". costeAcumulado: 150
+- Recorre "G". costeAcumulado: 175
+Fin. Total = 175
+```
+![Dikstra's_Algo](images/DSA_images/Dijkstra_Algo.png)
+*Su uso suele encontrarse en sistemas de navegación (como GPS), asignación de recursos y análisis de redes sociales. *
+
 
 - **A* Search Algorithm**:
 El _A* Search Algorithm (El algoritmo de busqueda A*)_
@@ -309,9 +372,10 @@ El _A* Search Algorithm (El algoritmo de busqueda A*)_
 - **Min-Cost Flow Algorithm**
 - **Prim’s Algorithm & Kruskal’s Algorithm**
 - **Bellman-Ford Algorithm.**
+
+*Si realmente te interesó el tema, te recomiendo chequearlos.*
 #### Tipos de representaciones.
 
-#### Mas tipos de grafos
 
 ---
 
@@ -321,3 +385,4 @@ Me he guiado de los siguientes artículos para desarrollar este tema:
 	
 - [Google Tech Dev Guide.](https://techdevguide.withgoogle.com/paths/data-structures-and-algorithms)
 - [Geeks For Geeks.](https://www.geeksforgeeks.org/data-structures/)
+- 
