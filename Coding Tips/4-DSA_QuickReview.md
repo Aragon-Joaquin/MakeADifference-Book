@@ -326,13 +326,13 @@ Se empieza por el nodo 0 (en nuestro caso, el "A"), y buscaremos por nodos adyac
 Primero definiremos nuestras relaciones adyacentes en una Matriz (aclaro que esto es una forma para resolverlo):
 ```js
 const graph = [
-	//node A ⬇
+	//node A neighbours ⬇
 	[{nodo: "B", peso: 50 }, {nodo: "C", peso: 100}, {nodo: "D", peso: 25}], 
-	[{nodo: "F", peso: 100 } ], // node B
-	[{nodo: "E", peso: 75 }], // node C
-	[{nodo: "E", peso: 200 }], // node D
-	[{nodo: "G", peso: 150 }], // node E 
-	[{nodo: "G", peso: 25 }], // node F
+	[{nodo: "F", peso: 100 } ], // node B neighbours
+	[{nodo: "E", peso: 75 }], // node C neighbours
+	[{nodo: "E", peso: 200 }], // node D neighbours
+	[{nodo: "G", peso: 150 }], // node E neighbours
+	[{nodo: "G", peso: 25 }], // node F neighbours
 ]
 
 
@@ -350,7 +350,7 @@ const nonVisited = [true, false, false, false, false, false, false]
 
 Luego procedemos al siguiente elemento del arreglo ($graph[1] = nodo B$), y le sumamos al nodo F la cantidad de peso ($distance[1]$) del nodo B. Y luego lo marcamos al nodo B como visitado, y asi sucesivamente hasta que el arreglo de $nonVisited$ sea completamente $true$.
 
-*Es tedioso realizar el codigo ya que he utilizado nodos con letras y no numeros, por lo tanto tendria que realizar una funcion/hashmap/enumeration que indique la posición del nodo al que se quiere trabajar.*
+*Es tedioso realizar el codigo ya que he utilizado nodos con letras y no numeros, por lo tanto tendria que realizar una funcion/hashmap/enumeration que indique la posición del nodo al que se quiere trabajar según su nombre.*
 
 He aquí los resultados de lo que nos debería dar:
 ``` python
@@ -361,12 +361,15 @@ He aquí los resultados de lo que nos debería dar:
 Fin. Total = 175
 ```
 ![Dikstra's_Algo](images/DSA_images/Dijkstra_Algo.png)
-*Su uso suele encontrarse en sistemas de navegación (como GPS), asignación de recursos y análisis de redes sociales. *
+*Su uso suele encontrarse en sistemas de navegación (como GPS), asignación de recursos y análisis de redes sociales.*
 
+*Un buen ejercicio seria [este](https://leetcode.com/problems/path-with-minimum-effort/description/?envType=problem-list-v2&envId=53js48ke), pero ten en cuenta que es dificultad mediana, si te resulta complejo te recomiendo buscar mas recursos sobre este algoritmo, ya que, solo te he demostrado las bases.*
 
 - **A* Search Algorithm**:
-El _A* Search Algorithm (El algoritmo de busqueda A*)_
+El _A* Search Algorithm (El algoritmo de busqueda A*)_ recorré un **weighted graph (grafo ponderado)** para encontrar el camino mas corto/barato. Comparte demasiadas similitudes con *Dijkstra’s Algorithm*, ya que este algoritmo esta basado en el pero lo que lo diferencia es que emplea **Heuristics (Heurísticos)** para lograr mejor rendimiento, sin tener que recorrer caminos ya descubiertos.
 
+**Heuristics (Heurísticos):**
+Consisten de métodos o técnicas para resolver problemas de un **Search Space (Espacio de busqueda)** atreves de intuición y exploración, siendo mas rápidos que la manera tradicional de realizarlo, con la desventaja de reducir su precisión y exactitud al elegir la mejor solución.
 
 *Tambien hay mas algoritmos para recorrer arboles como...*
 - **Min-Cost Flow Algorithm**
