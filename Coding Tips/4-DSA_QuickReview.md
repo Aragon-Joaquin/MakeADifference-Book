@@ -366,10 +366,41 @@ Fin. Total = 175
 *Un buen ejercicio seria [este](https://leetcode.com/problems/path-with-minimum-effort/description/?envType=problem-list-v2&envId=53js48ke), pero ten en cuenta que es dificultad mediana, si te resulta complejo te recomiendo buscar mas recursos sobre este algoritmo, ya que, solo te he demostrado las bases.*
 
 - **A* Search Algorithm**:
-El _A* Search Algorithm (El algoritmo de busqueda A*)_ recorré un **weighted graph (grafo ponderado)** para encontrar el camino mas corto/barato. Comparte demasiadas similitudes con *Dijkstra’s Algorithm*, ya que este algoritmo esta basado en el pero lo que lo diferencia es que emplea **Heuristics (Heurísticos)** para lograr mejor rendimiento, sin tener que recorrer caminos ya descubiertos.
+El _A* Search Algorithm (El algoritmo de busqueda A*)_ recorre un **weighted graph (grafo ponderado)** para encontrar el camino mas corto/barato. Comparte demasiadas similitudes con *Dijkstra’s Algorithm*, ya que este algoritmo esta basado en el pero lo que lo diferencia es que emplea **Heuristics (Heurísticos)** para lograr mejor rendimiento, sin tener que recorrer caminos ya descubiertos. 
+Su complejidad algorítmica seria de $O(E)$, siendo $E$ los Edges (Aristas).
 
 **Heuristics (Heurísticos):**
-Consisten de métodos o técnicas para resolver problemas de un **Search Space (Espacio de busqueda)** atreves de intuición y exploración, siendo mas rápidos que la manera tradicional de realizarlo, con la desventaja de reducir su precisión y exactitud al elegir la mejor solución.
+En *Ciencias de la Computación*, los heurísticos consisten de métodos o técnicas para resolver problemas de un **Search Space (Espacio de búsqueda)** atreves de intuición y exploración de este mismo, siendo mas rápidos que la manera tradicional de realizarlo, con la desventaja de reducir su precisión al elegir la mejor solución.
+
+*Unos ejemplos de Heuristicos en general pueden ser:*
+- **Rule of thumb (regla del pulgar)**.
+- **Estereotipos**.
+- **Sentido común**.
+
+*(En resumen, simplemente utilizan recursos disponibles para tomar atajos en vez de plantearse la mejor solución de principio a fin.)*
+Un caso en un mundo real podría ser una apertura en el Ajedrez. Nunca te vas a plantear las millones de opciones que vas a tener luego de jugar un peón o un caballo, sino que optaras por la cual te sienta mas confiado.
+
+**Breve explicación de su funcionamiento:**
+
+							== Revisar si es correcto ⬇ ==
+Para este ejemplo lo representaremos como una **Undirected Weighted Adjacency Matrix (Matriz de adyacencia ponderada no dirigida)**???, es decir, como una grilla (grid).
+
+*Primero me gustaría introducir los recursos sobre los que este algoritmo utiliza, y se basa en dos tipos de listas:*
+
+- **Open List (Lista Abierta):** Es una Priority Queue (nodo con valor menor será priorizado) que contiene los nodos proximos a visitar. Cuando esta lista es inicializada, siempre empezará con un 0 ya que representa al nodo donde se comienza.
+
+- **Closed List (Lista Cerrada):** Se almacenan los nodos previamente recorrido. Esta misma lista se utiliza también para reconstruir el camino decisivo.
+
+A su vez, también se denomina una **función evaluadora** que nos ayudara a guiarnos en el teorema:
+	$f(x) = g(x) + h(x)$ 
+
+Siendo: 
+- **g(x):** El costo del recorrido del estado inicial al nodo actual.
+-  **h(x):** El costo estimado del recorrido desde el estado inicial al objetivo.
+
+
+---
+
 
 *Tambien hay mas algoritmos para recorrer arboles como...*
 - **Min-Cost Flow Algorithm**
