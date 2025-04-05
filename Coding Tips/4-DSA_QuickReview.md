@@ -109,7 +109,7 @@ Root
 		└── Programming
 ```
 
-**Binary tree example:**
+**Binary tree (can have up to two children) example:**
 ![BinaryTreeExample](images/DSA_images/TreeExample.png)
 
 **Un poco de terminología para estar en la misma pagina:**
@@ -118,8 +118,7 @@ Root
 - Los nodos sin hijos (nodos descendientes) se llaman _Leaf Node_ (pintados de verde).
 - Un _Subtree_ (Subárbol) es un conjunto de nodos (junto a sus descendientes) a destacar dentro del mismo árbol principal. Ejemplo: Un subárbol podría ser Home, MyPC y User.
 
-**Un ejemplo de código sencillo en Python:**
-
+**Un ejemplo de código sencillo en Python (Usando un Subárbol):**
 ```python
 class Tree:
     def __init__(self):
@@ -360,13 +359,13 @@ He aquí los resultados de lo que nos debería dar:
 - Recorre "G". costeAcumulado: 175
 Fin. Total = 175
 ```
-![Dikstra's_Algo](images/DSA_images/Dijkstra_Algo.png)
+![Dijkstra's_Algo](images/DSA_images/Dijkstra_Algo.png)
 *Su uso suele encontrarse en sistemas de navegación (como GPS), asignación de recursos y análisis de redes sociales.*
 
 *Un buen ejercicio seria [este](https://leetcode.com/problems/path-with-minimum-effort/description/?envType=problem-list-v2&envId=53js48ke), pero ten en cuenta que es dificultad mediana, si te resulta complejo te recomiendo buscar mas recursos sobre este algoritmo, ya que, solo te he demostrado las bases.*
 
 - **A* Search Algorithm**:
-El _A* Search Algorithm (El algoritmo de busqueda A*)_ recorre un **weighted graph (grafo ponderado)** para encontrar el camino mas corto/barato. Comparte demasiadas similitudes con *Dijkstra’s Algorithm*, ya que este algoritmo esta basado en el pero lo que lo diferencia es que emplea **Heuristics (Heurísticos)** para lograr mejor rendimiento, sin tener que recorrer caminos ya descubiertos. 
+El _A* Search Algorithm (El algoritmo de busqueda A*)_ recorre un **weighted graph (grafo ponderado)** para encontrar el camino mas corto/barato. Comparte demasiadas similitudes con *Dijkstra’s Algorithm*, ya que este algoritmo esta basado en él, pero lo que lo diferencia es que emplea **Heuristics (Heurísticos)** para lograr mejor rendimiento, sin tener que recorrer caminos ya descubiertos. 
 Su complejidad algorítmica seria de $O(E)$, siendo $E$ los Edges (Aristas).
 
 **Heuristics (Heurísticos):**
@@ -378,26 +377,101 @@ En *Ciencias de la Computación*, los heurísticos consisten de métodos o técn
 - **Sentido común**.
 
 *(En resumen, simplemente utilizan recursos disponibles para tomar atajos en vez de plantearse la mejor solución de principio a fin.)*
-Un caso en un mundo real podría ser una apertura en el Ajedrez. Nunca te vas a plantear las millones de opciones que vas a tener luego de jugar un peón o un caballo, sino que optaras por la cual te sienta mas confiado.
+Un caso en un mundo real podría ser una apertura en el Ajedrez. Nunca te vas a plantear las millones de opciones que vas a tener luego de jugar un peón o un caballo para obtener la mejor jugada posible, sino que optaras por la cual te sienta mas confiado.
 
 **Breve explicación de su funcionamiento:**
+Para este ejemplo lo representaremos como un *Tree* aunque también, comúnmente en videojuegos, se suelen representan como **Undirected Weighted Adjacency Matrix (Matriz de adyacencia ponderada no dirigida)**, es decir, como una grilla (grid).
 
-							== Revisar si es correcto ⬇ ==
-Para este ejemplo lo representaremos como una **Undirected Weighted Adjacency Matrix (Matriz de adyacencia ponderada no dirigida)**???, es decir, como una grilla (grid).
+*Aquí seria el grafo (luego lo representaremos como un árbol) con cual vamos a trabajar.*
+![A* Algorithm - Analyzing the graph](images/DSA_images/1-A_Algo.png)
 
 *Primero me gustaría introducir los recursos sobre los que este algoritmo utiliza, y se basa en dos tipos de listas:*
 
-- **Open List (Lista Abierta):** Es una Priority Queue (nodo con valor menor será priorizado) que contiene los nodos proximos a visitar. Cuando esta lista es inicializada, siempre empezará con un 0 ya que representa al nodo donde se comienza.
+- **Open List (Lista Abierta):** Es una Priority Queue (nodo con valor menor será priorizado) que contiene los nodos próximos a visitar. Cuando esta lista es inicializada, solo almacenará el nodo donde se comienza (en nuestro caso es una $S$ con el valor de 0).
 
-- **Closed List (Lista Cerrada):** Se almacenan los nodos previamente recorrido. Esta misma lista se utiliza también para reconstruir el camino decisivo.
+- **Closed List (Lista Cerrada):** Se almacenan los nodos previamente recorridos. Esta misma lista se utiliza también para reconstruir el camino decisivo.
 
 A su vez, también se denomina una **función evaluadora** que nos ayudara a guiarnos en el teorema:
 	$f(x) = g(x) + h(x)$ 
 
 Siendo: 
-- **g(x):** El costo del recorrido del estado inicial al nodo actual.
--  **h(x):** El costo estimado del recorrido desde el estado inicial al objetivo.
+- $g(x)$: El costo del recorrido del estado inicial al nodo $x$.
+-  $h(x)$: El costo heurístico estimado del recorrido desde el nodo $x$ al objetivo.
 
+>**1era iteración:**
+
+1) 
+![A* Algorithm - First Run](images/DSA_images/AStar_Steps/FirstRun_1.png)
+En el primer recorrido, agregamos los nodos adyacentes a la Lista Abierta con su costo utilizando la función $f(x) = g(x) + h(x)$, siendo en este caso: 
+
+- $f(A) = g(3) + h(2)$ En el caso del nodo A ->$A[5]$ 
+- $f(C) = g(1) + h(8)$ En el caso del nodo C -> $C[9]$
+- $f(D) = g(4) + h(4)$ En el caso del nodo D -> $D[8]$
+
+Por ahora, decidiremos elegir el nodo con el menor costo ( En caso de empate, se puede el elegir el que tiene menos coste heurístico *h(x)* o nodos con mayor *g(x)* ), el nodo A. Y no nos olvidemos de añadir el nodo S a la Lista Cerrada, marcándolo como nodo ya recorrido. 
+
+2) 
+![A* Algorithm - First Run](images/DSA_images/AStar_Steps/FirstRun_2.png)
+Repetimos lo anterior pero con los nodos C y B, utilizando la misma formula y añadimos el nodo A a la Lista Cerrada.
+
+- $f(C) = g(2+3) + h(8)$ En el caso del nodo C -> $C[13]$
+- $f(B) = g(5+3) + h(1)$ En el caso del nodo B -> $B[9]$
+
+*__g(x)__ siempre sumará el costo del recorrido del nodo a ir (en este caso, 2 si hablamos del nodo C) mas los anteriores ya recorridos (solo el nodo A por ahora) = 2 + 3*
+
+3) 
+![A* Algorithm - First Run](images/DSA_images/AStar_Steps/FirstRun_3.png)
+Ahora, realizamos el coste del nodo G PERO aun sin recorrerlo, simplemente calculamos su costo y luego realizamos el segundo recorrido. Añadimos el nodo B a la Lista Cerrada.
+
+- $f(G) = g(4+5+3) + h(0)$ En el caso del nodo G -> $G[12]$
+
+>**2da iteración:**
+
+4) 
+![A* Algorithm - Second Run](images/DSA_images/AStar_Steps/SecondRun_1.png)
+Elegimos ahora en nodo D, ya que, su costo de $D[8]$ es menor a $C[9]$. Y realizamos de nuevo la función evaluadora de nuevo. Añadimos al nodo D a la lista cerrada.
+
+- $f(E) = g(1+4) + h(3)$ En el caso del nodo E -> $E[8]$
+
+5) 
+![A* Algorithm - Second Run](images/DSA_images/AStar_Steps/SecondRun_2.png)
+Añadimos el nodo G a la lista cerrada. No lo recorremos y volvemos a realizar la ultima y tercera iteración.
+
+- $f(G) = g(6+1+4) + h(0)$ En el caso del nodo G -> $G[11]$
+	
+>**3era iteración:**
+6) 
+![A* Algorithm - Third Run](images/DSA_images/AStar_Steps/ThirdRun_1.png)
+Nos queda solo el nodo G por recorrer, ya que, el nodo A ya se encuentra en la Lista Cerrada y no es necesario recorrerlo. Por lo tanto:
+
+- $f(G) = g(4+1) + h(0)$ En el caso del nodo G -> $G[5]$
+
+7) Entonces, una vez extraídos todos los nodos que llegan al objetivo, comparamos entre las posibles soluciones cual es la que tiene menor coste, y reconstruimos el camino. En nuestro caso, $G[5]$.
+
+**Técnicas para resolver el algoritmo en código**:
+
+Para eso, definiremos tanto como las relaciones de los nodos como sus costos de recorrido y luego, definiremos un Diccionario/Array Asociativo donde estará sus valores heurísticos. 
+
+```js
+const nodes = {
+"S" : [{node: "D", cost: 4}, {node: "A", cost: 3}, {node:"C", cost:1}],
+"A" : [{node: "C", cost: 2}, {node: "B", cost: 5}],
+"B" : [{node: "G", cost: 4}],
+"C" : {} //etc...
+}
+
+const heuristicValues = {
+"S": 7,
+"A": 2,
+"B": 1,
+"C": 8,
+"D": 4,
+"E": 3,
+"G": 0
+}
+```
+
+Una vez ya declarado,
 
 ---
 
