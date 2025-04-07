@@ -471,12 +471,35 @@ const heuristicValues = {
 }
 ```
 
-Una vez ya declarado,
+Supongo que ya tienes una idea de como se podría resolver esto. Voy a darte unas ideas para que :
+
+- Indicas el nodo *root* y el nodo al que buscas llegar.
+- Inicializa tanto la *OpenList* como la *ClosedList*.
+- **Mientras OpenList NO este vacía:**
+	- Selecciona el nodo con menor valor y que no haya sido explorado.
+	- Lo mueves a la *ClosedList*.
+	- Si encontraste el nodo actual es el *objetivo*, reconstruye el camino y retórnalo.
+	- Examinas nodos vecinos/adyacentes.
+		- Si el nodo vecino ya esta en la *ClosedList*, lo saltea.
+		- **Si el nodo vecino NO esta en la *openList*:** 
+			- Calculas sus costos $f(x) = g(x) + h(x)$ 
+			- Los añades a la *OpenList*. 
+		- **Si el nodo vecino esta ya en la *openList*:**
+			- Si su valor $g(x)$ es menor que el nodo actual, actualiza sus valores $g(x)$ y $f(x)$ *(el heurístico sigue siendo el mismo)* y actualiza que su nodo padre al actual ya que, sino, al reconstruir el camino tomará otro inesperado.
+		-
+- **Mientras OpenList este vacía:**
+	- No se ha podido encontrar el nodo *objetivo*. **No existe un camino hacia el objetivo.**
+
+*Una vez se alcance el objetivo, reconstruye el camino al revés utilizando los **nodos padres** hasta llegar a uno que no tenga. Con eso llegarías al nodo **root**. *
+
+Es normal que no lo hayas entendido por completo. Solo busco darte una idea general, y creo que he entrado en demasiado detalle para dejarlo así, por eso, te dejo algunos recursos para que puedas entenderlo mejor:
+
+- 
 
 ---
 
 
-*Tambien hay mas algoritmos para recorrer arboles como...*
+*También hay mas algoritmos para recorrer arboles como...*
 - **Min-Cost Flow Algorithm**
 - **Prim’s Algorithm & Kruskal’s Algorithm**
 - **Bellman-Ford Algorithm.**
