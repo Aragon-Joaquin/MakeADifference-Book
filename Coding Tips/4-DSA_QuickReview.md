@@ -2,13 +2,20 @@
 
 > **Tabla de contenidos:**
 
-- [[#Title 1]]
-- [[#Title 2]]
-  - [[#Subtitle 1]]
-  - [[#Subtitle 2]]
-- [[#Title 3]]
-
-# ==🔨ARTICLE IN CONSTRUCTION ==
+- [Associative array (Maps/Dictionaries)](#associative-array-mapsdictionaries)
+- [Linked Lists](#linked-lists)
+- [Trees](#trees)
+	- [Tipos de Arboles](#tipos-de-arboles)
+- [Stacks \& Queues](#stacks--queues)
+	- [Stacks (Pila)](#stacks-pila)
+	- [Queues (Cola/Fila)](#queues-colafila)
+	- [Conceptos Generales sobre Stacks y Queues.](#conceptos-generales-sobre-stacks-y-queues)
+- [Heaps](#heaps)
+- [Graphs](#graphs)
+	- [Tipos de aristas.](#los-aristas-pueden-ser-de-dos-tipos)
+	- [Algoritmos para recorrer grafos.](#algoritmos-para-recorrer-grafos)
+- [¡Gracias por leer!](#gracias-por-leer)
+	- [Lo que ha quedado pendiente (+ RECURSOS)](#lo-que-ha-quedado-pendiente--recursos-)
 
 ---
 
@@ -494,26 +501,44 @@ Supongo que ya tienes una idea de como se podría resolver esto. Voy a darte una
 
 Es normal que no lo hayas entendido por completo. Solo busco darte una idea general, y creo que he entrado en demasiado detalle para dejarlo así, por eso, te dejo algunos recursos para que puedas entenderlo mejor:
 
-- 
-
----
-
+- [WEB - Visualiza como recorre el algoritmo.](https://pages.trinhminhtriet.com/a-star-search/)
+- [WEB - Articulo donde he tomado mas referencias](https://www.codecademy.com/resources/docs/ai/search-algorithms/a-star-search)
+- [YT - Explicación general de como funciona en un plano 2d](https://www.youtube.com/watch?v=uJdGyXYk1v0)
 
 *También hay mas algoritmos para recorrer arboles como...*
-- **Min-Cost Flow Algorithm**
-- **Prim’s Algorithm & Kruskal’s Algorithm**
+- **Min-Cost Flow Algorithm.**
+- **Prim’s Algorithm & Kruskal’s Algorithm.**
 - **Bellman-Ford Algorithm.**
 
 *Si realmente te interesó el tema, te recomiendo chequearlos.*
-#### Tipos de representaciones.
-
 
 ---
+## ¡Gracias por leer!
 
-# Bibliografía
+*¡Eso es todo por este articulo! Ahora es tu turno de practicar.*
 
-Me he guiado de los siguientes artículos para desarrollar este tema:
+Obviamente hay mas estructuras de datos y algoritmos los cuales enseñar, pero este articulo ya se volvió demasiado extenso para ser un repaso de estos.
+
+**En el futuro es posible que haga una parte 2 sobre esto,** pero mientras, me mantendré al tanto de las correcciones y escribiré mas artículos.
+
+#### Lo que ha quedado pendiente (+ RECURSOS) :
+
+- [Algoritmos](https://www3.cs.stonybrook.edu/~skiena/373/videos/):
+	- DEPTH-FIRST SEARCH
+	- BREADTH-FIRST SEARCH 
+	- MERGESORT / QUICKSORT
+	- + Greedy Algorithms *(como __Dijkstra's algorithm__ o __Huffman coding__)*
 	
-- [Google Tech Dev Guide.](https://techdevguide.withgoogle.com/paths/data-structures-and-algorithms)
-- [Geeks For Geeks.](https://www.geeksforgeeks.org/data-structures/)
-- 
+- Runtime Analysis: 
+	- [BIG O NOTATION (mismo link)](https://the-amazing-gentleman-programming-book.vercel.app/en/book/Chapter06_Algorithms#big-o-notation)
+	- Asymptotic Notations.
+	
+- Estructuras de datos:
+	- Trie (Arból Digital)
+	
+- Extras:
+	- Recursion
+	- Dynamic Programming
+
+***Y probablemente muchos mas temas.***
+*Aquí te dejo un [Roadmap](https://roadmap.sh/datastructures-and-algorithms) relacionado a lo visto por si te encuentras aun confuso o no sabes que es lo siguiente a aprender.*
