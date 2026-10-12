@@ -1,4 +1,10 @@
-#javascript #intermedio
+---
+title: "Javascript Generator"
+date: 2024-09-22
+lastModified: 2024-09-22
+tags: [spanish, javascript, intermedium]
+author: "Aragon Joaquin"
+---
 
 > **Tabla de contenidos:**
 - [¿Que es un Generator en JS?](#que-es-un-generator-en-js)
@@ -13,7 +19,6 @@
     - [Return en Generators](#return-en-generators)
     - [Asignación de parámetros](#asignación-de-parámetros)
 
----
 ## ¿Que es un Generator en JS?
 
 Los generadores en JavaScript provienen de un objeto iterable llamado _Generador_ que fue introducido en el estándar **EcmaScript 2015** y nos permite _pausar, reanudar y producir varios valores_ en nuestras funciones heredadas de esta instancia (objeto que fue creado por una clase o un constructor).

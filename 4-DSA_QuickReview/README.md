@@ -1,4 +1,10 @@
-#programacion #cs #algoritmos #DSA
+---
+title: "DSA Quick Review"
+date: 2025-04-17
+lastModified: 2025-04-17
+tags: [spanish, programming, algorithms, dsa]
+author: "Aragon Joaquin"
+---
 
 > **Tabla de contenidos:**
 
@@ -67,7 +73,7 @@ La diferencia que tiene de un _Arreglo_ es que cada nodo almacena la referencia 
 Hay casos donde esto no ocurre debido a que se trata de **Circular Linked List**, y el ultimo nodo vuelve a apuntar al *head* en vez de un valor nulo. Porfavor, mire la siguiente imagen y comparé:
 
 **LinkedList example:**
-![LinkedList](images/DSA_images/LinkedList.png)*Tambien existen las **Doubly Linked List**, que contienen 3 campos.*
+![LinkedList](images/LinkedList.png)*Tambien existen las **Doubly Linked List**, que contienen 3 campos.*
 - *__PreviousVal__: Un puntero al nodo anterior.* 
 - *__Value__: El valor actual de este nodo.*
 - *__NextVal__: Un puntero al siguiente nodo.*
@@ -117,7 +123,7 @@ Root
 ```
 
 **Binary tree (can have up to two children) example:**
-![BinaryTreeExample](images/DSA_images/TreeExample.png)
+![BinaryTreeExample](images/TreeExample.png)
 
 **Un poco de terminología para estar en la misma pagina:**
 
@@ -226,14 +232,14 @@ La forma de representación de este Heap en un array seria de:
 ```python
 [10, 6, 3, 2, 5, 1]
 ```
-![MaxHeapExample](images/DSA_images/MaxHeap.png)
+![MaxHeapExample](images/MaxHeap.png)
 - **Min Heap:**
 El *Root* debe ser el menor valor de todos los nodos, y sus hijos deberán siempre ser **mayor** o **igual** al nodo padre.
 La forma de representación de este Heap en un array seria de:
 ```python
 [2, 4, 5, 12, 6, 9, 7]
 ```
-![MinHeapExample](images/DSA_images/MinHeap.png)
+![MinHeapExample](images/MinHeap.png)
 
 *Para acceder al elemento deseado del Heap, es recomendado utilizar las siguientes operaciones 
 ( "i" es el índice del elemento del array que se desea saber los siguientes datos):*
@@ -261,7 +267,7 @@ La diferencia principal a la de un *Árbol*, es que este **no tiene reglas de co
 
 - **Undirected (no dirigido):** Los no dirigidos, en cambio, conectan dos nodos bi-direccionalmente. Pueden ir de punto $A → B$ y $B → A$. **Su denotación matemática** es { $A,B$ }, sin importar el orden, ya que, no es dirigido.
 
-![TypesOfEdges](images/DSA_images/Types_Edges.png)
+![TypesOfEdges](images/Types_Edges.png)
 
 #### Algoritmos para recorrer grafos.
 
@@ -289,7 +295,7 @@ No hay mas nodos adyacentes, se regresa hasta 4.
 Fin.
 ```
 
-![DFSExample](images/DSA_images/Graph_DFS.png)
+![DFSExample](images/Graph_DFS.png)
 *Usualmente utilizado para PathFinding, resolver laberintos o detección de ciclos en el grafo.*
 
 - **Breadth-First Search (BFS):**
@@ -311,7 +317,7 @@ Fin.
 Fin.
 ```
 
-![BFSExample](images/DSA_images/Graph_BFS.png)
+![BFSExample](images/Graph_BFS.png)
 *Utilizado para resolver puzzles, encontrar el camino mas corto de unweighted graphs (grafos no ponderados) o transmisiones en redes.*
 
 - **Dijkstra’s Algorithm**:
@@ -366,7 +372,7 @@ He aquí los resultados de lo que nos debería dar:
 - Recorre "G". costeAcumulado: 175
 Fin. Total = 175
 ```
-![Dijkstra's_Algo](images/DSA_images/Dijkstra_Algo.png)
+![Dijkstra's_Algo](images/Dijkstra_Algo.png)
 *Su uso suele encontrarse en sistemas de navegación (como GPS), asignación de recursos y análisis de redes sociales.*
 
 *Un buen ejercicio seria [este](https://leetcode.com/problems/path-with-minimum-effort/description/?envType=problem-list-v2&envId=53js48ke), pero ten en cuenta que es dificultad mediana, si te resulta complejo te recomiendo buscar mas recursos sobre este algoritmo, ya que, solo te he demostrado las bases.*
@@ -390,7 +396,7 @@ Un caso en un mundo real podría ser una apertura en el Ajedrez. Nunca te vas a 
 Para este ejemplo lo representaremos como un *Tree* aunque también, comúnmente en videojuegos, se suelen representan como **Undirected Weighted Adjacency Matrix (Matriz de adyacencia ponderada no dirigida)**, es decir, como una grilla (grid).
 
 *Aquí seria el grafo (luego lo representaremos como un árbol) con cual vamos a trabajar.*
-![A* Algorithm - Analyzing the graph](images/DSA_images/1-A_Algo.png)
+![A* Algorithm - Analyzing the graph](images/1-A_Algo.png)
 
 *Primero me gustaría introducir los recursos sobre los que este algoritmo utiliza, y se basa en dos tipos de listas:*
 
@@ -408,7 +414,7 @@ Siendo:
 >**1era iteración:**
 
 1) 
-![A* Algorithm - First Run](images/DSA_images/AStar_Steps/FirstRun_1.png)
+![A* Algorithm - First Run](images/AStar_Steps/FirstRun_1.png)
 En el primer recorrido, agregamos los nodos adyacentes a la Lista Abierta con su costo utilizando la función $f(x) = g(x) + h(x)$, siendo en este caso: 
 
 - $f(A) = g(3) + h(2)$ En el caso del nodo A ->$A[5]$ 
@@ -418,7 +424,7 @@ En el primer recorrido, agregamos los nodos adyacentes a la Lista Abierta con su
 Por ahora, decidiremos elegir el nodo con el menor costo ( En caso de empate, se puede el elegir el que tiene menos coste heurístico *h(x)* o nodos con mayor *g(x)* ), el nodo A. Y no nos olvidemos de añadir el nodo S a la Lista Cerrada, marcándolo como nodo ya recorrido. 
 
 2) 
-![A* Algorithm - First Run](images/DSA_images/AStar_Steps/FirstRun_2.png)
+![A* Algorithm - First Run](images/AStar_Steps/FirstRun_2.png)
 Repetimos lo anterior pero con los nodos C y B, utilizando la misma formula y añadimos el nodo A a la Lista Cerrada.
 
 - $f(C) = g(2+3) + h(8)$ En el caso del nodo C -> $C[13]$
@@ -427,7 +433,7 @@ Repetimos lo anterior pero con los nodos C y B, utilizando la misma formula y a�
 *__g(x)__ siempre sumará el costo del recorrido del nodo a ir (en este caso, 2 si hablamos del nodo C) mas los anteriores ya recorridos (solo el nodo A por ahora) = 2 + 3*
 
 3) 
-![A* Algorithm - First Run](images/DSA_images/AStar_Steps/FirstRun_3.png)
+![A* Algorithm - First Run](images/AStar_Steps/FirstRun_3.png)
 Ahora, realizamos el coste del nodo G PERO aun sin recorrerlo, simplemente calculamos su costo y luego realizamos el segundo recorrido. Añadimos el nodo B a la Lista Cerrada.
 
 - $f(G) = g(4+5+3) + h(0)$ En el caso del nodo G -> $G[12]$
@@ -435,20 +441,20 @@ Ahora, realizamos el coste del nodo G PERO aun sin recorrerlo, simplemente calcu
 >**2da iteración:**
 
 4) 
-![A* Algorithm - Second Run](images/DSA_images/AStar_Steps/SecondRun_1.png)
+![A* Algorithm - Second Run](images/AStar_Steps/SecondRun_1.png)
 Elegimos ahora en nodo D, ya que, su costo de $D[8]$ es menor a $C[9]$. Y realizamos de nuevo la función evaluadora de nuevo. Añadimos al nodo D a la lista cerrada.
 
 - $f(E) = g(1+4) + h(3)$ En el caso del nodo E -> $E[8]$
 
 5) 
-![A* Algorithm - Second Run](images/DSA_images/AStar_Steps/SecondRun_2.png)
+![A* Algorithm - Second Run](images/AStar_Steps/SecondRun_2.png)
 Añadimos el nodo G a la lista cerrada. No lo recorremos y volvemos a realizar la ultima y tercera iteración.
 
 - $f(G) = g(6+1+4) + h(0)$ En el caso del nodo G -> $G[11]$
 	
 >**3era iteración:**
 6) 
-![A* Algorithm - Third Run](images/DSA_images/AStar_Steps/ThirdRun_1.png)
+![A* Algorithm - Third Run](images/AStar_Steps/ThirdRun_1.png)
 Nos queda solo el nodo G por recorrer, ya que, el nodo A ya se encuentra en la Lista Cerrada y no es necesario recorrerlo. Por lo tanto:
 
 - $f(G) = g(4+1) + h(0)$ En el caso del nodo G -> $G[5]$
