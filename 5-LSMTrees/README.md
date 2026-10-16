@@ -27,11 +27,38 @@ A log structured merge (LSM, for shorthand) tree is becoming the standard in NoS
 
 ## The simple complexity of a modern LSMTree
 
+![high_level_architecture](./images/high_level_arch.webp)
+
 As you might expect, implementing a modern storage engine is not easy. We will continuing with the LSMTree example and explaining one of its components.
 
 #### SSTable
 
-And to being with, the SSTable would be adequate. Why we dont use in-memory hash maps for these operations? [...]
+A sorted string table (SSTable) is a persistent file of ordered key/value pairs where the key is the primary identifier for the block (which internally has in the same file, usually 64kb in size) and the value indicates the offset where this block starts. Usually this stage is reached only on writes and reads, by missing the cache of the Memtable and using a Bloom Filter. Both of these artifacts will be explained later on.
+
+Then, an interesting question would be "Why we don't instead use in-memory hash maps for lookups in disk?".
+
+```md
+| key | offset |
+| --- | ------ |
+| 1   | 0      |
+| 2   | 17     |
+| 3   | 24     |
+| 4   | ...    |
+
+// example.db
+1,"hello, world!"\n
+2,"1120"\n
+3,"\[null, 1, 10, null\]"\n
+...
+```
+
+There's certain flaws with this:
+
+- The hash table must fit in memory.
+- A restart would require to compute every key offset since there's no disk recover for these indexes.
+- Old log entries would be hard to modify since the offset would be pointing to the wrong location (changing the key 1 to "bye, world!" needs to update the offset of the following keys). Deleting entries also is a problem.
+
+There's also compaction.
 
 ## LSMTrees vs B-Trees
 
@@ -45,3 +72,7 @@ Both of these data structures are use in a context of write/read-heavy applicati
 
 ![LSM_vs_Btree_Benchmark](images/LSM_btree_Throughput.png)
 ![sequential_vs_random](images/jacobs3.jpg)
+
+```
+
+```
