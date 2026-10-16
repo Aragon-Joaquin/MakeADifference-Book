@@ -1,11 +1,3 @@
----
-title: "Javascript Generator"
-date: 2024-09-22
-lastModified: 2024-09-22
-tags: [spanish, javascript, intermedium]
-author: "Aragon Joaquin"
----
-
 > **Tabla de contenidos:**
 - [¿Que es un Generator en JS?](#que-es-un-generator-en-js)
 - [El problema con las funciones.](#el-problema-con-las-funciones)

@@ -1,11 +1,3 @@
----
-title: "DSA Quick Review"
-date: 2025-04-17
-lastModified: 2025-04-17
-tags: [spanish, programming, algorithms, dsa]
-author: "Aragon Joaquin"
----
-
 > **Tabla de contenidos:**
 
 - [Associative array (Maps/Dictionaries)](#associative-array-mapsdictionaries)
