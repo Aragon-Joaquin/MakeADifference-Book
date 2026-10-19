@@ -1,11 +1,3 @@
----
-title: "LSM Trees"
-date: 2026-12-31
-lastModified: 2026-12-31
-tags: []
-author: "Aragon Joaquin"
----
-
 ### LSM Trees
 
 - where this could be useful
